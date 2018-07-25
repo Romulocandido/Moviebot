@@ -17,7 +17,7 @@ server.post('/getMovies',function (request,response)  {
             req.query({
                 "page": "1",
                 "language": "en-US",
-                "api_key": ""
+                "api_key": "95af1e4cfe2cfa63a452d0a8545ff5a2"
             });
             req.send("{}");
             req.end(function(res) {
@@ -50,7 +50,7 @@ server.post('/getMovies',function (request,response)  {
                 "page": "1",
                 "query":movie,
                 "language": "en-US",
-                "api_key": ""
+                "api_key": "95af1e4cfe2cfa63a452d0a8545ff5a2"
             });
             req.send("{}");
             req.end(function(res) {
@@ -83,7 +83,7 @@ server.post('/getMovies',function (request,response)  {
             req.query({
                 "page": "1",
                 "language": "en-US",
-                "api_key": ""
+                "api_key": "95af1e4cfe2cfa63a452d0a8545ff5a2"
             });
             req.send("{}");
             req.end(function(res){
