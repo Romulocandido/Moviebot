@@ -16,7 +16,7 @@ server.post('/getMovies',function (request,response)  {
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/top_rated");
             req.query({
                 "page": "1",
-                "language": "en-US",
+                "language": "pt-BR",
                 "api_key": "95af1e4cfe2cfa63a452d0a8545ff5a2"
             });
             req.send("{}");
@@ -49,7 +49,7 @@ server.post('/getMovies',function (request,response)  {
                 "include_adult": "false",
                 "page": "1",
                 "query":movie,
-                "language": "en-US",
+                "language": "pt-BR",
                 "api_key": "95af1e4cfe2cfa63a452d0a8545ff5a2"
             });
             req.send("{}");
@@ -82,7 +82,7 @@ server.post('/getMovies',function (request,response)  {
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/popular");
             req.query({
                 "page": "1",
-                "language": "en-US",
+                "language": "pt-BR",
                 "api_key": "95af1e4cfe2cfa63a452d0a8545ff5a2"
             });
             req.send("{}");
