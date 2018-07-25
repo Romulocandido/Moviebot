@@ -12,7 +12,7 @@ var port = process.env.PORT || 8080;
 const server = express();
 server.use(bodyParser.json());
 server.post('/getMovies',function (request,response)  {
-    if(request.body.result.parameters['top-rated']) {
+    if(request.body.queryResult.parameters['top-rated']) {
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/top_rated");
             req.query({
                 "page": "1",
@@ -24,8 +24,8 @@ server.post('/getMovies',function (request,response)  {
                 if(res.error) {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
+                        "source": "EchoService",
+                        "fulfillmentText" : "Error. Can you try it again ? "
                     }));
                 } else if(res.body.results.length > 0) {
                     let result = res.body.results;
@@ -36,12 +36,12 @@ server.post('/getMovies',function (request,response)  {
                     }
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : output,
-                        "displayText" : output
+                        "source": "EchoService",
+                        "fulfillmentText" : output
                     })); 
                 }
             });
-    } else if(request.body.result.parameters['movie-name']) {
+    } else if(request.body.queryResult.parameters['movie-name']) {
      //   console.log('popular-movies param found');
         let movie = request.body.result.parameters['movie-name'];
         var req = unirest("GET", "https://api.themoviedb.org/3/search/movie");
@@ -57,8 +57,8 @@ server.post('/getMovies',function (request,response)  {
                 if(res.error) {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
+                        "source": "EchoService",
+                        "fulfillmentText" : "Error. Can you try it again ? "
                     }));
                 } else if(res.body.results.length > 0) {
                 let result = res.body.results[0];
@@ -66,19 +66,19 @@ server.post('/getMovies',function (request,response)  {
                 "\n Plot : " + result.overview + "url" + result.poster_path
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : output,
-                        "displayText" : output
+                        "source": "EchoService",
+                        "fulfillmentText" : output
                     }));
                 } else {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Couldn't find any deatails. :(  ",
-                        "displayText" : "Couldn't find any deatails. :(  "
+                        "source": "EchoService",
+                        "fulfillmentText" : "Couldn't find any deatails. :(  "
                     }));
                 }
             });
 
-    } else if(request.body.result.parameters['popular-movies']) {    
+    } else if(request.body.queryResult.parameters['popular-movies']) {    
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/popular");
             req.query({
                 "page": "1",
@@ -90,8 +90,8 @@ server.post('/getMovies',function (request,response)  {
                 if(res.error) {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
+                        "source": "EchoService",
+                        "fulfillmentText" : "Error. Can you try it again ? "
                     }));
                 } else {
                     let result = res.body.results;
@@ -102,8 +102,8 @@ server.post('/getMovies',function (request,response)  {
                     }
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : output,
-                        "displayText" : output
+                         "source": "EchoService",
+                        "fulfillmentText" : output
                     })); 
                 }
             });
